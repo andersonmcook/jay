@@ -1,21 +1,29 @@
 # Jay
 
-**TODO: Add description**
 
-## Installation
+## leex
+[Documentation](https://erlang.org/doc/man/leex.html)
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `jay` to your list of dependencies in `mix.exs`:
+A regular expression based lexical analyzer generator for Erlang, similar to lex or flex.
 
-```elixir
-def deps do
-  [
-    {:jay, "~> 0.1.0"}
-  ]
-end
+Reads a `.xrl` file with Definitions, Rules, and Erlang code headings. A `.erl` file is generated automatically if placed in the `src` directory.
+
+Generates a `string/1` function that will return a list of tokens.
+
+`.xrl` file structure
 ```
+<Header>
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/jay](https://hexdocs.pm/jay).
+Definitions.
+
+<Macro Definitions>
+
+Rules.
+
+<Token Rules>
+
+Erlang code.
+
+<Erlang code>
+```
 

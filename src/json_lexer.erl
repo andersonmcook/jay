@@ -1,4 +1,4 @@
--file("/usr/local/Cellar/erlang/22.3.3/lib/erlang/lib/parsetools-2.1.8/include/leexinc.hrl", 0).
+-file("/Users/acook/.asdf/installs/erlang/22.3.3/lib/parsetools-2.1.8/include/leexinc.hrl", 0).
 %% The source of this file is part of leex distribution, as such it
 %% has the same Copyright as the other files in the leex
 %% distribution. The Copyright is defined in the accompanying file
@@ -13,8 +13,10 @@
 
 %% User code. This is placed here to allow extra attributes.
 -file("src/json_lexer.xrl", 41).
+atom_token(Atom, TokenLine, TokenChars) ->
+    {token, {Atom, TokenLine, list_to_atom(TokenChars)}}.
 
--file("/usr/local/Cellar/erlang/22.3.3/lib/erlang/lib/parsetools-2.1.8/include/leexinc.hrl", 14).
+-file("/Users/acook/.asdf/installs/erlang/22.3.3/lib/parsetools-2.1.8/include/leexinc.hrl", 14).
 
 format_error({illegal,S}) -> ["illegal characters ",io_lib:write_string(S)];
 format_error({user,S}) -> S.
@@ -305,7 +307,7 @@ adjust_line(T, A, [_|Cs], L) ->
 %% return signal either an unrecognised character or end of current
 %% input.
 
--file("src/json_lexer.erl", 307).
+-file("src/json_lexer.erl", 309).
 yystate() -> 27.
 
 yystate(30, Ics, Line, Tlen, _, _) ->
@@ -515,7 +517,7 @@ yyaction_1() ->
 -compile({inline,yyaction_2/2}).
 -file("src/json_lexer.xrl", 26).
 yyaction_2(TokenChars, TokenLine) ->
-     { token, { comma, TokenLine, list_to_atom (TokenChars) } } .
+     atom_token (comma, TokenLine, TokenChars) .
 
 -compile({inline,yyaction_3/2}).
 -file("src/json_lexer.xrl", 27).
@@ -550,26 +552,26 @@ yyaction_8(TokenLine) ->
 -compile({inline,yyaction_9/2}).
 -file("src/json_lexer.xrl", 33).
 yyaction_9(TokenChars, TokenLine) ->
-     { token, { open_curly, TokenLine, list_to_atom (TokenChars) } } .
+     atom_token (open_curly, TokenLine, TokenChars) .
 
 -compile({inline,yyaction_10/2}).
 -file("src/json_lexer.xrl", 34).
 yyaction_10(TokenChars, TokenLine) ->
-     { token, { close_curly, TokenLine, list_to_atom (TokenChars) } } .
+     atom_token (close_curly, TokenLine, TokenChars) .
 
 -compile({inline,yyaction_11/2}).
 -file("src/json_lexer.xrl", 35).
 yyaction_11(TokenChars, TokenLine) ->
-     { token, { open_square, TokenLine, list_to_atom (TokenChars) } } .
+     atom_token (open_square, TokenLine, TokenChars) .
 
 -compile({inline,yyaction_12/2}).
 -file("src/json_lexer.xrl", 36).
 yyaction_12(TokenChars, TokenLine) ->
-     { token, { close_square, TokenLine, list_to_atom (TokenChars) } } .
+     atom_token (close_square, TokenLine, TokenChars) .
 
 -compile({inline,yyaction_13/2}).
 -file("src/json_lexer.xrl", 37).
 yyaction_13(TokenChars, TokenLine) ->
-     { token, { colon, TokenLine, list_to_atom (TokenChars) } } .
+     atom_token (colon, TokenLine, TokenChars) .
 
--file("/usr/local/Cellar/erlang/22.3.3/lib/erlang/lib/parsetools-2.1.8/include/leexinc.hrl", 313).
+-file("/Users/acook/.asdf/installs/erlang/22.3.3/lib/parsetools-2.1.8/include/leexinc.hrl", 313).
