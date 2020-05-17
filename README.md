@@ -31,7 +31,22 @@ The headings are mandatory and you'll get an obtuse error if you misspell one or
 
 Definitions are a mapping of name to regex.
 
-Rules are a mapping of regex to Erlang code. There are special predefined variables that can be used in the code portion. The code must either be a token literal or return a token.
+Rules are a mapping of regex to Erlang code. There are special predefined variables that can be used in the code portion.
+
+- `TokenChars`
+- `TokenLen`
+- `TokenLine`
+
+The code must either be a token literal or return a token. 
+
+- `{token, Token}`
+- `{end_token, Token}`
+- `skip_token`
+- `{error, ErrString}`
+
+Can also push back characters for the next token.
+
+Each block is scoped and can include variables.
 
 ## yecc
 [Documentation](https://erlang.org/doc/man/yecc.html)
@@ -64,4 +79,5 @@ Rootsymbol <value>.
 <Erlang code.>
 ```
 
-The grammar rules are in the form `lhs -> rhs : code` where `lhs` is a non-terminal category, `rhs` is a sequence of one or more symbols, and `code` is zero or more Erlang expressions.
+The grammar rules are in the form `lhs -> rhs : code` where `lhs` is a non-terminal category, `rhs` is a sequence of one or more symbols, and `code` is zero or more Erlang expressions. The Erlang expressions have access to pseudo variables `'$n'` where `n` is a positive integer relating to the position of the match (indexed starting at 1).
+
