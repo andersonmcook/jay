@@ -6,31 +6,23 @@ defmodule Jay do
   @doc """
   Uses leex and yecc to compile parsing strategy and rules.
   """
-  def ly_parse(string) when is_binary(string) do
+  def parse(string) when is_binary(string) do
     string
     |> String.to_charlist()
-    |> ly_parse()
+    |> parse()
   end
 
-  def ly_parse(charlist) do
-    charlist
-    |> :json_lexer.string()
-    |> case do
-      {:ok, tokens, _end_line} ->
-        :json_parser.parse(tokens)
-
-      error ->
-        error
+  def parse(charlist) do
+    with {:ok, tokens, _end_line} <- :json_lexer.string(charlist) do
+      :json_parser.parse(tokens)
     end
   end
 
   @doc """
   Parses more than it explodes.
   """
-  def ly_parse!(parsable) do
-    parsable
-    |> ly_parse()
-    |> case do
+  def parse!(parsable) do
+    case parse(parsable) do
       {:ok, parsed} -> parsed
       {:error, reason} -> raise inspect(reason)
     end
