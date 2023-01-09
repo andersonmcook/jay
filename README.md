@@ -51,7 +51,7 @@ Each block is scoped and can include variables.
 ## yecc
 [Documentation](https://erlang.org/doc/man/yecc.html)
 
-An LALR-1 parser generator for Erlang, similar to yacc. Takes a BNF grammar definition as input, and produces Erlang code for a parser.
+An [LALR-1](https://en.wikipedia.org/wiki/LALR_parser) parser generator for Erlang, similar to yacc. Takes a [Backus-Naur Form](https://en.wikipedia.org/wiki/Backus-Naur_form) grammar definition as input, and produces Erlang code for a parser.
 
 An LALR-1 parser is a Look-Ahead Left to right, Rightmost derivation parser.  The "1" denotes one-token lookahead.
 
